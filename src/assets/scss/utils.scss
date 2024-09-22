@@ -1,0 +1,35 @@
+.full-height {
+  height: 100%;
+}
+
+.rounded {
+  border-radius: 4px;
+}
+
+.btn-success {
+  color: white;
+
+  &:hover {
+    color: white;
+  }
+
+  &:disabled {
+    color: white;
+  }
+}
+
+.flex-break {
+  flex: 1 0 100% !important;
+  padding: 0 !important;
+}
+.row .flex-break {
+  height: 0 !important;
+}
+.column .flex-break {
+  width: 0 !important;
+}
+
+.pre-fancy {
+  white-space: pre-line;
+  font-family: $typography-font-family;
+}

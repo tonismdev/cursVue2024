@@ -1,0 +1,44 @@
+# stages:
+#   - build
+
+# build_pre:
+#   stage: build
+#   script:
+#     - yarn install
+#     - cp .env.pre .env
+#     - yarn build
+#     - rsync -rav --delete dist/ deployer@prevueXX:/var/www/frontend/
+#     - rsync -rav --delete dist-docs/ deployer@prevueXX:/var/www/frontend/docs/
+#   environment:
+#     name: pre
+#     url: https://proves.imasmallorca.net/tramits
+#   only:
+#     - pre
+
+# build_pro:
+#   stage: build
+#   script:
+#     - yarn install
+#     - cp .env.pro .env
+#     - yarn build
+#     - rsync -rav --update dist/ deployer@provueXX:/var/www/frontend/
+#     - rsync -rav --delete dist-docs/ deployer@provueXX:/var/www/frontend/docs/
+#   environment:
+#     name: pro
+#     url: https://www.imasmallorca.net/tramits
+#   only:
+#     - master
+
+# build_pro_scheduled:
+#   stage: build
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == "schedule"
+#     - if: $CI_COMMIT_REF_NAME == "master"
+#   script:
+#     - yarn install
+#     - cp .env.pro .env
+#     - yarn build
+#     - rsync -rav --delete dist/ deployer@provueXX:/var/www/tramits/
+#   environment:
+#     name: pro
+#     url: https://www.imasmallorca.net/tramits

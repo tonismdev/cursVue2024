@@ -1,0 +1,81 @@
+{
+  "404": "No s'ha pogut trobar el que estau cercant",
+  "detectada_nova_versio": "S'han detectat nous canvis a l'aplicació, per favor, guardi la sol·licitud si té dades sense guardar, i premeu acceptar.",
+  "netError": "Hi ha hagut un error en la petició. Per favor, provi-ho més tard",
+  "unknownError": "Hi ha hagut un error desconegut. Per favor, provi-ho més tard",
+  "noRol": "No tens el rol LDAP assignat, consulta amb informàtica",
+  "home": "Inici",
+  "meu": "El meu | Els meus",
+  "per": {
+    "persona": "Persona | Persones",
+    "lpersona": "La persona | Les persones",
+    "tipus_doi": "Tipus document",
+    "t_doi": {
+      "N": "DNI",
+      "C": "CIF",
+      "P": "Passaport",
+      "E": "NIE",
+      "X": "Altres persona física",
+      "O": "Codi administració"
+    },
+    "id": "Núm",
+    "doi": "Núm document",
+    "nom": "Nom",
+    "sexe": "Sexe",
+    "sex": {
+      "H": "Home",
+      "D": "Dona"
+    },
+    "llinatge1": "Primer llinatge",
+    "llinatge2": "Segon llinatge",
+    "data_naixement": "Data naixement",
+    "telefon": "Telèfon",
+    "email": "Correu",
+    "observacions": "Observacions"
+  },
+  "ui": {
+    "create": "Creació",
+    "update": "Modificació",
+    "alta": "Alta",
+    "resum": "Resum",
+    "msg": {
+      "updateSuccess": "{el} s'ha actualitzat correctament",
+      "createSuccess": "{el} s'ha creat correctament",
+      "deleteSuccess": "{el} s'ha esborrat correctament",
+      "voleuEsborrar": "Voleu esborrar {en} {el}?",
+      "crearIdoneitat": "Heu de crear una idoneitat positiva",
+      "canviEstatCorrecte": "S'ha canviat l'estat de forma correcte",
+      "unSolicitant": "Heu de marcar almenys un sol·licitant",
+      "noActuacions": "No hi ha actuacions. Clicau el botó d'afegir actuació per crear la primera"
+    },
+    "val": {
+      "obligatori": "El valor es obligatori",
+      "dateFormat": "El format de la data no es vàlid ({format})",
+      "nieFormat": "El @:mem.nif no te un format correcte",
+      "minLenght": "Ha de tenir mínim {min} caràcters",
+      "maxLenght": "Ha de tenir màxim {max} caràcters",
+      "email": "El format del correu no es vàlid"
+    },
+    "btn": {
+      "search": "Cercar",
+      "create": "Crear",
+      "save": "Guardar",
+      "tornar": "Tornar",
+      "edit": "Editar",
+      "add": "Afegir",
+      "next": "Següent",
+      "cencel": "Cancel·lar"
+    },
+    "breadcrumbs": {}
+  },
+  "errors": {
+    "validation": {
+      "required": "{entitat} és obligatori",
+      "integer": "{entitat} ha de ser numèric",
+      "max": { "string": "{entitat} és massa llarg" },
+      "min": { "string": "{entitat} és massa curt" }
+    },
+    "imas_no_tancat": "L'expedient ja te una valoració oberta",
+    "imas_no_permisos": "No te permisos per a realitzar aquesta operació"
+  }
+}

@@ -1,0 +1,19 @@
+# docker-compose
+version: "3.7"
+services:
+  frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      #args:
+        # proxy: "http://proxycentral.imasmallorca.net:8080/"
+    container_name: cursvue-frontend
+    image: cursvue-frontend
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
+    command: sh -c "yarn install && yarn dev"
+
