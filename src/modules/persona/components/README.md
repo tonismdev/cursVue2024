@@ -16,7 +16,18 @@ Aquest component representa una targeta que mostra la informació d'una persona,
   - `color` (string): Color de fons de la targeta.
   - `icon` (string): Ruta de la icona per mostrar.
 
-### 2. **PersonaCardEmit.vue** (Component específic amb `emit`, `expose` i `slot`)
+### 2. **GenericCard.vue** (Component genèric)
+
+Aquest component és una targeta genèrica que accepta diversos paràmetres separats com a `props`, incloent nom, email, DOI, icona i color. No està lligat a cap model específic i pot ser reutilitzat per mostrar diferents tipus de dades.
+
+- **Props:**
+  - `nom` (string): Nom de la persona o ítem.
+  - `email` (string): Correu electrònic.
+  - `doi` (string): DOI o altra informació identificativa.
+  - `icon` (string): Ruta de la icona.
+  - `color` (string): Color de fons de la targeta.
+
+### 3. **PersonaCardEmit.vue** (Component específic amb `emit`, `expose` i `slot`)
 
 Aquest component és una versió ampliada del component `PersonaCard.vue` i afegeix interactivitat mitjançant:
 
@@ -31,17 +42,6 @@ Aquest component és una versió ampliada del component `PersonaCard.vue` i afeg
 - **Mètodes i característiques:**
   - `gestionaClick`: Emet l'event `persona-click` amb la persona clicada.
   - **Exposició de mètodes:** El mètode `canviaColor` permet als components externs canviar el color de la targeta.
-
-### 3. **GenericCard.vue** (Component genèric)
-
-Aquest component és una targeta genèrica que accepta diversos paràmetres separats com a `props`, incloent nom, email, DOI, icona i color. No està lligat a cap model específic i pot ser reutilitzat per mostrar diferents tipus de dades.
-
-- **Props:**
-  - `nom` (string): Nom de la persona o ítem.
-  - `email` (string): Correu electrònic.
-  - `doi` (string): DOI o altra informació identificativa.
-  - `icon` (string): Ruta de la icona.
-  - `color` (string): Color de fons de la targeta.
 
 ### 4. **App.vue** (Instància dels components)
 
