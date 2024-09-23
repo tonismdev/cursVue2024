@@ -8,7 +8,7 @@
         {{ persona.nom }} {{ persona.llinatge1 }} {{ persona.llinatge2 || '' }}
       </h2>
       <p>{{ persona.email }}</p>
-      <p v-if="showDoi">DOI: {{ persona.doi }}</p>
+      <p>{{ persona.doi }}</p>
     </div>
   </div>
 </template>
@@ -32,10 +32,6 @@
         type: String,
         default: '/default-icon.png',
       },
-      showDoi: {
-        type: Boolean,
-        default: false,
-      },
     },
   })
 </script>
@@ -47,6 +43,8 @@
     padding: 16px;
     display: flex;
     align-items: center;
+    max-width: 40em;
+    margin-left: 2em;
   }
 
   .icon img {

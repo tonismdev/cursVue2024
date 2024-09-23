@@ -49,6 +49,7 @@
     display: flex;
     align-items: center;
     max-width: 40em;
+    margin-left: 2em;
   }
 
   .icon img {

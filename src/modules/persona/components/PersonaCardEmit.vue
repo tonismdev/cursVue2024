@@ -14,13 +14,13 @@
         {{ persona.nom }} {{ persona.llinatge1 }} {{ persona.llinatge2 || '' }}
       </h2>
       <p>{{ persona.email }}</p>
-      <p v-if="showDoi">DOI: {{ persona.doi }}</p>
+      <p>{{ persona.doi }}</p>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { defineComponent, PropType, ref } from 'vue'
+  import { defineComponent, PropType, ref, watch } from 'vue'
   import { Persona } from '../models/Persona' // Importa el model Persona
 
   export default defineComponent({
@@ -38,10 +38,6 @@
         type: String,
         default: '/default-icon.png',
       },
-      showDoi: {
-        type: Boolean,
-        default: false,
-      },
     },
     emits: ['persona-click'], // Defineix el nom de la propietat on s'haurà d'especificar el mètode que es cridarà al pare quan es faci click
     //methods: {
@@ -56,6 +52,14 @@
       const gestionaClick = () => {
         emit('persona-click', props.persona)
       }
+
+      // Actualitat del color quan la prop canvia
+      watch(
+        () => props.color,
+        (nouColor) => {
+          color.value = nouColor
+        }
+      )
 
       // Mètode per canviar el color de fons
       const canviaColor = (nouColor: string) => {
@@ -82,6 +86,7 @@
     display: flex;
     align-items: center;
     max-width: 45em;
+    margin-left: 2em;
   }
 
   .icon img {
