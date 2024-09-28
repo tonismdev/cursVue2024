@@ -48,6 +48,15 @@
     </template>
   </PersonaCardEmit>
   <button @click="canviaPersonaCardColor">Fitxa vermella</button>
+  <h5>Prova d'ús d'un composable: comptador</h5>
+  <p>El valor és: {{ valor }}</p>
+  <button @click="incrementar">Incrementar</button>
+  <button @click="decrementar">Decrementar</button>
+
+  <h5>Prova d'ús d'un composable: toggle</h5>
+  <p>{{ estat ? 'És cert' : 'És fals' }}</p>
+  <p v-if="estat">Sí, que és cert</p>
+  <button @click="toggle">Canviar estat</button>
 </template>
 
 <script lang="ts" setup>
@@ -59,9 +68,12 @@
   import { useMeta } from 'quasar'
   import { ref } from 'vue'
   import ImasLoading from './core/components/ImasLoading.vue'
+  import { useComptador } from './modules/shared/composables/useComptador'
+  import { useToggle } from './modules/shared/composables/useToggle'
 
   const pinia = staticTables()
-
+  const { valor, incrementar, decrementar } = useComptador(7)
+  const { estat, toggle } = useToggle(false)
   useMeta(() => {
     return {
       // whenever "title" from above changes, your meta will automatically update

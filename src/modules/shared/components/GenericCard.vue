@@ -11,33 +11,19 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent } from 'vue'
+<script lang="ts" setup>
+  interface Props {
+    nom: string
+    email: string
+    doi?: string
+    icon?: string
+    color?: string
+  }
 
-  export default defineComponent({
-    name: 'GenericCard',
-    props: {
-      nom: {
-        type: String,
-        required: true,
-      },
-      email: {
-        type: String,
-        required: true,
-      },
-      doi: {
-        type: String,
-        default: '',
-      },
-      icon: {
-        type: String,
-        default: '/default-icon.png',
-      },
-      color: {
-        type: String,
-        default: '#fff',
-      },
-    },
+  const props = withDefaults(defineProps<Props>(), {
+    doi: '',
+    icon: '/default-icon.png',
+    color: '#fff',
   })
 </script>
 

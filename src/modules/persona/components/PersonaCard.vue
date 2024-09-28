@@ -13,26 +13,18 @@
   </div>
 </template>
 
-<script lang="ts">
-  import { defineComponent, PropType } from 'vue'
+<script lang="ts" setup>
   import { Persona } from '../models/Persona' // Importa el model Persona
 
-  export default defineComponent({
-    name: 'PersonaCard',
-    props: {
-      persona: {
-        type: Object as PropType<Persona>,
-        required: true,
-      },
-      color: {
-        type: String,
-        default: '#fff',
-      },
-      icon: {
-        type: String,
-        default: '/default-icon.png',
-      },
-    },
+  interface Props {
+    persona: Persona
+    color?: string
+    icon?: string
+  }
+
+  const props = withDefaults(defineProps<Props>(), {
+    color: '#fff',
+    icon: '/default-icon.png',
   })
 </script>
 
