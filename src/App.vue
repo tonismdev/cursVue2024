@@ -1,7 +1,6 @@
 <template>
   <router-view />
   <ImasLoading />
-
   <h1>Curs Vue 2024 - Exercici 2</h1>
   Prova de la creació de dos components amb Vue 3:
   <h5>Component genèric</h5>

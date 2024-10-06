@@ -1,7 +1,6 @@
 import { ref } from 'vue'
 
 export const useComptador = (valorInicial: number) => {
-  // definició de variables i mètodes
   const valor = ref(valorInicial)
 
   const incrementar = () => {

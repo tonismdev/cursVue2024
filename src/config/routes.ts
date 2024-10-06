@@ -1,5 +1,8 @@
+import { config } from '@/config'
 import { demoRoutes } from '@/modules/demo/routes'
+import quatreRoutes from '@/modules/quatre/router'
 import { RouteRecordRaw } from 'vue-router'
+
 /**
  * FITXER DE RUTES
  *
@@ -16,9 +19,11 @@ const Home = () => import('@/modules/shared/views/Home.vue')
 
 export const routes: RouteRecordRaw[] = [
   {
-    path: '',
+    //path: '/',
+    path: `/${config.APP_PROJECT_NAME}/`, // Cambia aquí
     component: Home,
     name: 'Home',
   },
   ...demoRoutes,
+  ...quatreRoutes,
 ]

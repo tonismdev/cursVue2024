@@ -7,7 +7,6 @@ export const useToggle = (estatInicial: boolean) => {
   }
 
   return {
-    // parametres i mètodes
     estat,
     toggle,
   }
