@@ -1,4 +1,5 @@
-//import { init } from '@/core/keycloak'
+import { config } from '@/config/index'
+import { init } from '@/core/keycloak'
 import { VueQueryPlugin, VueQueryPluginOptions } from '@tanstack/vue-query'
 import mitt from 'mitt'
 import { Dialog, Loading, Notify, Quasar } from 'quasar'
@@ -38,33 +39,28 @@ const pinia = createPinia().use(createORM())
  */
 import ImasCalendarComponent from './core/components/imas-calendar/ImasCalendarComponent.vue'
 
-// Keycloak comentat perque no es fa servir
-//const params = {
-//  init: {
-// Use 'login-required' to always require authentication
-// If using 'login-required', there is no need for the router guards in router.js
-//    onLoad: 'check-sso',
-//    timeSkew: 50,
-//    silentCheckSsoRedirectUri: config.KC_SSO_URL,
-//  },
-//  config: {
-//    url: config.KEYCLOAK_URL,
-//    realm: config.KEYCLOAK_REALM,
-//    clientId: config.KEYCLOAK_CLIENT,
-//  },
-//}
+const params = {
+  init: {
+    // Use 'login-required' to always require authentication
+    // If using 'login-required', there is no need for the router guards in router.js
+    onLoad: 'check-sso',
+    timeSkew: 50,
+    silentCheckSsoRedirectUri: config.KC_SSO_URL,
+  },
+  config: {
+    url: config.KEYCLOAK_URL,
+    realm: config.KEYCLOAK_REALM,
+    clientId: config.KEYCLOAK_CLIENT,
+  },
+}
 
 const defaultParams = {
   config: window.__BASEURL__ ? `${window.__BASEURL__}/config` : '/config',
-  //init: { onLoad: 'login-required' },
+  init: { onLoad: 'login-required' },
 }
+const options = Object.assign({}, defaultParams, params)
 
-// Keycloak comentat perque no es fa servir params
-//const options = Object.assign({}, defaultParams, params)
-const options = Object.assign({}, defaultParams)
-
-// Keycloak comentat perque no es fa servir
-//init(options.config, options)
+init(options.config, options)
 
 const vueQueryPluginOptions: VueQueryPluginOptions = {
   queryClientConfig: {
