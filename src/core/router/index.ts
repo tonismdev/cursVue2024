@@ -67,7 +67,7 @@ function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
-router.beforeEach(async (to, from, next) => {
+/*router.beforeEach(async (to, from, next) => {
   while (imasKeycloak.ready == false) {
     await sleep(100)
   }
@@ -100,6 +100,59 @@ router.beforeEach(async (to, from, next) => {
       next({ name: 'Login' })
     }
   } else {
+    next()
+  }
+})
+*/
+
+router.beforeEach(async (to, from, next) => {
+  console.log('Navegant de', from.name, 'a', to.name)
+
+  /*while (imasKeycloak.ready == false) {
+    await sleep(100)
+    console.log('Keycloak sleep')
+  }*/
+  console.log('Prova')
+  if (!pinia) pinia = staticTables()
+  pinia.breadcrumbsItems = null
+
+  console.log('Verificant permisos per a la ruta', to.path)
+
+  // Validam que la url no requereix rols d'accés
+  if (
+    Array.isArray(to.meta?.roles) &&
+    !to.meta?.roles.some((rol) => hasRole(rol))
+  ) {
+    console.log('Accés denegat: rol no autoritzat', to.meta?.roles)
+    next({ name: 'not-found' })
+    return
+  }
+
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    console.log("Ruta protegida, verificació d'autenticació")
+
+    if (imasKeycloak.authenticated) {
+      console.log('Usuari autenticat')
+      if (!config.APP_LDAP_ROL.some((rol) => hasRole(rol))) {
+        imasKeycloak.ldapError =
+          'No tens el rol LDAP assignat, consulta amb informàtica'
+        console.log('Accés denegat: no té rol LDAP assignat')
+
+        if (config.CUSTOM_LOGIN) {
+          next({ name: 'Login' })
+        } else {
+          next({ name: 'Error', query: { code: 403, message: 'noRol' } })
+        }
+      } else {
+        console.log('Accés permès, redirigint a la ruta')
+        next()
+      }
+    } else {
+      console.log('Usuari no autenticat, redirigint a Login')
+      next({ name: 'Login' })
+    }
+  } else {
+    console.log('Ruta no protegida, accés permès')
     next()
   }
 })

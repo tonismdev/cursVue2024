@@ -41,4 +41,9 @@ export const navbarItems: ImasNavbarItemHeader[] = [
       return true
     },
   },
+  {
+    title: 'Activitats',
+    icon: 'fas fa-clock',
+    to: { name: 'Activitats' },
+  },
 ]

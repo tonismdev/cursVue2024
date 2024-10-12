@@ -1,6 +1,5 @@
-import { config } from '@/config'
 import { demoRoutes } from '@/modules/demo/routes'
-import quatreRoutes from '@/modules/quatre/router'
+import { quatreRoutes } from '@/modules/quatre/router'
 import { RouteRecordRaw } from 'vue-router'
 
 /**
@@ -20,7 +19,8 @@ const Home = () => import('@/modules/shared/views/Home.vue')
 export const routes: RouteRecordRaw[] = [
   {
     //path: '/',
-    path: `/${config.APP_PROJECT_NAME}/`, // Cambia aquí
+    //path: `/${config.APP_PROJECT_NAME}/`, // Cambia aquí
+    path: 'home',
     component: Home,
     name: 'Home',
   },
