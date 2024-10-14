@@ -34,8 +34,8 @@ export const navbarItems: ImasNavbarItemHeader[] = [
     ],
   },
   {
-    title: tc('tri'),
-    to: { name: 'Home' },
+    title: tc('Dades'),
+    to: { name: 'Dades' },
     icon: 'fa-solid fa-children',
     active: () => {
       return true
