@@ -16,7 +16,7 @@ export const navbarItems: ImasNavbarItemHeader[] = [
       {
         title: 'Taula',
         icon: 'fas fa-clock',
-        to: { name: 'Demo' }, // Demo es el name que heu definit dins router
+        to: { name: 'Demo' },
       },
       {
         title: 'Taules auxiliars',
@@ -27,7 +27,7 @@ export const navbarItems: ImasNavbarItemHeader[] = [
       {
         title: 'Demo useMeta',
         icon: 'fas fa-heading',
-        to: { name: 'DemoUseTitle' }, // DemoUseTitle es el name que heu definit dins router
+        to: { name: 'DemoUseTitle' },
       },
       { isSeparator: true },
       { title: 'Prova2', icon: 'fas fa-clock' },
@@ -45,5 +45,10 @@ export const navbarItems: ImasNavbarItemHeader[] = [
     title: 'Activitats',
     icon: 'fas fa-clock',
     to: { name: 'Activitats' },
+  },
+  {
+    title: 'Rockets List',
+    icon: 'fa-solid fa-rocket',
+    to: { name: 'RocketsList' },
   },
 ]

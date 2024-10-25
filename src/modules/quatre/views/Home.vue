@@ -1,16 +1,24 @@
 <template>
   <div>
     <h1>Home</h1>
+    <h2>Usuari connectat</h2>
     <p>
       Benvingut a la pàgina principal {{ usuariStore.nom }} ({{
         usuariStore.codiUsuari
       }}) - {{ usuariStore.correu }}.
     </p>
+    <p>
+      Empra una store pinia per emmagatzemar les dades de l'usuari connectat, a
+      la pestanya Dades es permet modificar algunes dades.
+    </p>
   </div>
   <div>
-    <h1>Gestió de Peticions</h1>
-
-    <h2>Llista de Peticions</h2>
+    <h2>Gestió de Peticions</h2>
+    <p>
+      Empra model pinia ORM, per guardar una llista de comandes, a la pestanya
+      Dades es permet indicar que ja s'han servit les comandes pendents.
+    </p>
+    <h5>Llista de Peticions</h5>
     <ul>
       <li v-for="peticio in peticionsStore.peticions" :key="peticio.id">
         <strong>Element:</strong> {{ peticio.element }} -
@@ -21,7 +29,7 @@
       </li>
     </ul>
 
-    <h2>Afegir nova petició</h2>
+    <h5>Afegir nova petició</h5>
     <div>
       <label for="element">Element:</label>
       <input id="element" v-model="novaPeticio.element" />
