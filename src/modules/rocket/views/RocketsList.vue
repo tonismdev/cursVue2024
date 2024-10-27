@@ -1,24 +1,71 @@
 <!-- Vista per al llistat de coets -->
 
 <template>
-  <div>
-    <h1>Llista de coets</h1>
-    <div v-if="isFetching">Carregant...</div>
-    <ul v-else>
-      <li v-for="rocket in rockets" :key="rocket.id">
-        <router-link :to="{ name: 'RocketDetall', params: { id: rocket.id } }">
-          {{ rocket.name }}
-        </router-link>
-      </li>
-    </ul>
-  </div>
+  <q-page padding>
+    <q-toolbar>
+      <q-toolbar-title>
+        <div class="text-h4">Llista de Coets</div>
+      </q-toolbar-title>
+    </q-toolbar>
+
+    <!-- Spinner de càrrega mentre es carrega la informació -->
+    <div v-if="isFetching" class="q-pa-md flex flex-center">
+      <q-spinner color="primary" size="50px" />
+      <div class="text-caption">Carregant coets...</div>
+    </div>
+
+    <!-- Taula amb la llista de coets -->
+    <q-table
+      v-else
+      :rows="rockets"
+      :columns="columns"
+      row-key="id"
+      flat
+      separator="horizontal"
+    >
+      <template v-slot:body-cell-name="props">
+        <q-td :props="props">{{ props.row.name }}</q-td>
+      </template>
+
+      <template v-slot:body-cell-company="props">
+        <q-td :props="props">{{ props.row.company }}</q-td>
+      </template>
+
+      <template v-slot:body-cell-description="props">
+        <q-td :props="props">{{ props.row.description }}</q-td>
+      </template>
+
+      <template v-slot:body-cell-actions="props">
+        <q-td :props="props" align="right">
+          <q-btn
+            :to="{ name: 'RocketDetall', params: { id: props.row.id } }"
+            label="Detalls"
+            color="primary"
+            flat
+          />
+        </q-td>
+      </template>
+    </q-table>
+  </q-page>
 </template>
 
 <script setup lang="ts">
+  import { ref } from 'vue'
   import { useFetchRockets } from '../composables/useFetchRockets'
 
-  console.log('previ a cridar')
+  // Obtenim els coets i l'estat de càrrega
   const { rockets, isFetching } = useFetchRockets()
-  console.log('posterior a cridar')
-  console.log('Rockets data:', rockets.value)
+
+  // Definició de les columnes per a la taula
+  const columns = ref([
+    { name: 'name', label: 'Nom', field: 'name', align: 'left' },
+    { name: 'company', label: 'Companyia', field: 'company', align: 'left' },
+    {
+      name: 'description',
+      label: 'Descripció',
+      field: 'description',
+      align: 'left',
+    },
+    { name: 'actions', label: 'Accions', align: 'right' },
+  ])
 </script>
