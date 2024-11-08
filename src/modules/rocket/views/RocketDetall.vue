@@ -1,19 +1,76 @@
 <!-- Vista per a visualitzar el detall d'un coet -->
 
 <template>
-  <div>
-    <h1>{{ rocket?.name }}</h1>
-    <p>{{ rocket?.description }}</p>
-    <p>Country: {{ rocket?.country }}</p>
-    <p>Company: {{ rocket?.company }}</p>
-    <p>Cost per launch: {{ rocket?.cost_per_launch }}</p>
+  <q-page padding v-if="rocket">
+    <q-card flat bordered class="q-pa-md">
+      <q-card-section>
+        <div class="text-h4">{{ rocket.name }}</div>
+        <div class="text-subtitle1 q-mt-sm">{{ rocket.company }}</div>
+      </q-card-section>
+
+      <q-separator />
+
+      <!-- Imatge del coet només si `flickr_images` està definit i té elements -->
+      <q-card-section
+        v-if="rocket.flickr_images && rocket.flickr_images.length > 0"
+      >
+      </q-card-section>
+
+      <q-separator />
+
+      <!-- Descripció del coet -->
+      <q-card-section>
+        <div class="text-h6 q-mb-xs">Descripció</div>
+        <p>{{ rocket.description }}</p>
+      </q-card-section>
+
+      <q-separator />
+
+      <!-- Altres detalls -->
+      <q-card-section>
+        <div class="text-h6 q-mb-xs">Detalls del Coet</div>
+        <div class="q-gutter-md">
+          <div><strong>Pais:</strong> {{ rocket.country }}</div>
+          <div><strong>Actiu:</strong> {{ rocket.active }}</div>
+          <div>
+            <strong>Cost per llançament:</strong> ${{
+              rocket.cost_per_launch?.toLocaleString()
+            }}
+          </div>
+        </div>
+      </q-card-section>
+
+      <div>
+        <q-chip
+          outline
+          :color="rocket.active ? 'positive' : 'negative'"
+          icon="check"
+          :icon="rocket.active ? 'check' : 'close'"
+        >
+          {{ rocket.active ? 'Actiu' : 'Inactiu' }}
+        </q-chip>
+      </div>
+
+      <q-separator />
+    </q-card>
+  </q-page>
+
+  <!-- Mostra un missatge de càrrega si `rocket` és nul -->
+  <div v-else class="q-pa-md text-center">
+    <q-spinner color="primary" size="50px" />
+    <div class="text-caption q-mt-sm">Carregant detalls del coet...</div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { useRoute } from 'vue-router'
+  import { useRoute, useRouter } from 'vue-router'
   import { useFetchRocketById } from '../composables/useFetchRocketById'
 
   const route = useRoute()
+  const router = useRouter()
   const { rocket, isFetching } = useFetchRocketById(route.params.id as string)
+
+  const goBack = () => {
+    router.back()
+  }
 </script>

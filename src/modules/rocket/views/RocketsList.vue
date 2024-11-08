@@ -31,10 +31,6 @@
         <q-td :props="props">{{ props.row.company }}</q-td>
       </template>
 
-      <template v-slot:body-cell-description="props">
-        <q-td :props="props">{{ props.row.description }}</q-td>
-      </template>
-
       <template v-slot:body-cell-actions="props">
         <q-td :props="props" align="right">
           <q-btn
@@ -60,12 +56,6 @@
   const columns = ref([
     { name: 'name', label: 'Nom', field: 'name', align: 'left' },
     { name: 'company', label: 'Companyia', field: 'company', align: 'left' },
-    {
-      name: 'description',
-      label: 'Descripció',
-      field: 'description',
-      align: 'left',
-    },
     { name: 'actions', label: 'Accions', align: 'right' },
   ])
 </script>
