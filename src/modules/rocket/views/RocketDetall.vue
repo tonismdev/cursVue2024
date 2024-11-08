@@ -10,14 +10,6 @@
 
       <q-separator />
 
-      <!-- Imatge del coet només si `flickr_images` està definit i té elements -->
-      <q-card-section
-        v-if="rocket.flickr_images && rocket.flickr_images.length > 0"
-      >
-      </q-card-section>
-
-      <q-separator />
-
       <!-- Descripció del coet -->
       <q-card-section>
         <div class="text-h6 q-mb-xs">Descripció</div>
@@ -44,14 +36,25 @@
         <q-chip
           outline
           :color="rocket.active ? 'positive' : 'negative'"
-          icon="check"
-          :icon="rocket.active ? 'check' : 'close'"
+          :icon="
+            rocket.active ? 'fa-solid fa-star' : 'fa-solid fa-times-circle'
+          "
         >
           {{ rocket.active ? 'Actiu' : 'Inactiu' }}
         </q-chip>
       </div>
 
       <q-separator />
+
+      <q-card-actions align="right">
+        <q-btn
+          label="Tornar"
+          color="primary"
+          flat
+          icon="fa-solid fa-backward"
+          @click="goBack"
+        />
+      </q-card-actions>
     </q-card>
   </q-page>
 
