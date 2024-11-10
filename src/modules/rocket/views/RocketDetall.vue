@@ -73,6 +73,8 @@
   const router = useRouter()
   const { rocket, isFetching } = useFetchRocketById(route.params.id as string)
 
+  console.log('Coet retornat: ', rocket)
+
   const goBack = () => {
     router.back()
   }

@@ -14,6 +14,8 @@ export function useFetchRocketById(id: string) {
       )
       const rocket = new Rocket(response.data)
       store.setRocket(rocket)
+      console.log('Rocket retornat: ', rocket)
+
       return rocket
     },
   })

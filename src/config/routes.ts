@@ -1,6 +1,8 @@
 import { demoRoutes } from '@/modules/demo/routes'
+import { expedientRutes } from '@/modules/expedient/router'
 import { quatreRoutes } from '@/modules/quatre/router'
 import { rocketRoutes } from '@/modules/rocket/router'
+import { usuariRoutes } from '@/modules/usuari/router'
 import { RouteRecordRaw } from 'vue-router'
 
 /**
@@ -28,4 +30,6 @@ export const routes: RouteRecordRaw[] = [
   ...demoRoutes,
   ...quatreRoutes,
   ...rocketRoutes,
+  ...usuariRoutes,
+  ...expedientRutes,
 ]
