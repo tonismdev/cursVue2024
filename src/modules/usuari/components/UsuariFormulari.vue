@@ -38,8 +38,8 @@
     <q-separator />
 
     <q-card-actions align="right">
-      <q-btn flat label="Cancel·la" color="negative" @click="onCancel" />
-      <q-btn flat label="Desa" color="positive" @click="onSubmit" />
+      <q-btn flat label="Cancel·lar" color="negative" @click="onCancel" />
+      <q-btn flat label="Guardar" color="positive" @click="onSubmit" />
     </q-card-actions>
   </q-card>
 </template>

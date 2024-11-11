@@ -56,4 +56,9 @@ export const navbarItems: ImasNavbarItemHeader[] = [
     icon: 'fa-solid fa-rocket',
     to: { name: 'UsuariLlista' },
   },
+  {
+    title: 'Expedients',
+    icon: 'fa-solid fa-rocket',
+    to: { name: 'ExpedientLlista' },
+  },
 ]
